@@ -1,4 +1,4 @@
-name: "Find Latest Tag of Git repository"
+name: "Find Latest Tag of Git repository (fork by dmitriysafronov)"
 description: "Find latest tag of any Git repository on the Internet"
 inputs:
   repo:
@@ -19,4 +19,4 @@ runs:
       id: flt
 branding:
   icon: tag
-  color: black
+  color: white
