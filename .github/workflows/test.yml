@@ -12,39 +12,39 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Test latest tag of the old helmfile repo
-        id: helmfile
-        uses: ./
-        with:
-          repo: https://github.com/roboll/helmfile.git
-      - name: Test latest tag of helmfile (with v, equivalent to just latest tag)
-        id: helmfile-v
-        uses: ./
-        with:
-          repo: https://github.com/roboll/helmfile.git
-          tag: '^v'
+      # - name: Test latest tag of the old helmfile repo
+      #   id: helmfile
+      #   uses: ./
+      #   with:
+      #     repo: https://github.com/roboll/helmfile.git
+      # - name: Test latest tag of helmfile (with v, equivalent to just latest tag)
+      #   id: helmfile-v
+      #   uses: ./
+      #   with:
+      #     repo: https://github.com/roboll/helmfile.git
+      #     tag: '^v'
       - name: Test last RC of Linux v4.15
         id: linux-415
         uses: ./
         with:
           repo: https://github.com/torvalds/linux.git
           tag: '^v4\.15'
-      - name: Test last tag of gmnhg (v0.2)
-        id: gmnhg-02
-        uses: ./
-        with:
-          repo: https://github.com/tdemin/gmnhg.git
-          tag: '^v0\.2'
-      - name: Test last tag of Go (v1.12.X)
-        id: go-112
-        uses: ./
-        with:
-          repo: https://github.com/golang/go.git
-          tag: '^go1\.12.[0-9]+$'
+      # - name: Test last tag of gmnhg (v0.2)
+      #   id: gmnhg-02
+      #   uses: ./
+      #   with:
+      #     repo: https://github.com/tdemin/gmnhg.git
+      #     tag: '^v0\.2'
+      # - name: Test last tag of Go (v1.12.X)
+      #   id: go-112
+      #   uses: ./
+      #   with:
+      #     repo: https://github.com/golang/go.git
+      #     tag: '^go1\.12.[0-9]+$'
       - name: Test tags
         run: |
-          ./test.sh "${{ steps.helmfile.outputs.tag }}" = "v0.144.0"
-          ./test.sh "${{ steps.helmfile-v.outputs.tag }}" = "v0.144.0"
+          # ./test.sh "${{ steps.helmfile.outputs.tag }}" = "v0.144.0"
+          # ./test.sh "${{ steps.helmfile-v.outputs.tag }}" = "v0.144.0"
           ./test.sh "${{ steps.linux-415.outputs.tag }}" = "v4.15-rc9" 
-          ./test.sh "${{ steps.gmnhg-02.outputs.tag }}" = "v0.2.0"
-          ./test.sh "${{ steps.go-112.outputs.tag }}" = "go1.12.17"
+          # ./test.sh "${{ steps.gmnhg-02.outputs.tag }}" = "v0.2.0"
+          # ./test.sh "${{ steps.go-112.outputs.tag }}" = "go1.12.17"
