@@ -28,7 +28,7 @@ jobs:
         uses: ./
         with:
           repo: https://github.com/torvalds/linux.git
-          tag: '^v4\.15'
+          tag: '^v4\.15$'
       # - name: Test last tag of gmnhg (v0.2)
       #   id: gmnhg-02
       #   uses: ./
