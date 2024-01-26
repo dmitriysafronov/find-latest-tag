@@ -25,7 +25,7 @@ jobs:
         uses: ./
         with:
           repo: https://github.com/torvalds/linux.git
-          tag: '^v2\.6\.[0-9]-rc[0-9]+$'
+          tag: '^v2\.6\.[0-9]\-rc[0-9]+$'
 
       - name: Test tags
         run: |
