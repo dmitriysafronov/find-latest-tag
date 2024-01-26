@@ -23,12 +23,6 @@ jobs:
       #   with:
       #     repo: https://github.com/roboll/helmfile.git
       #     tag: '^v'
-      - name: Test last RC of Linux v2.6.39
-        id: linux-2-6-39
-        uses: ./
-        with:
-          repo: https://github.com/torvalds/linux.git
-          tag: '^v2\.6'
       # - name: Test last tag of gmnhg (v0.2)
       #   id: gmnhg-02
       #   uses: ./
@@ -41,10 +35,19 @@ jobs:
       #   with:
       #     repo: https://github.com/golang/go.git
       #     tag: '^go1\.12.[0-9]+$'
+      - name: Test last RC of Linux v2.6.39
+        id: linux-2-6-39
+        uses: ./
+        with:
+          repo: https://github.com/torvalds/linux.git
+          tag: '^v2\.6\.[0-9]+$'
       - name: Test tags
         run: |
-          # ./test.sh "${{ steps.helmfile.outputs.tag }}" = "v0.144.0"
-          # ./test.sh "${{ steps.helmfile-v.outputs.tag }}" = "v0.144.0"
           ./test.sh "${{ steps.linux-2-6-39.outputs.tag }}" = "v2.6.39" 
+
+
+
+        # ./test.sh "${{ steps.helmfile.outputs.tag }}" = "v0.144.0"
+          # ./test.sh "${{ steps.helmfile-v.outputs.tag }}" = "v0.144.0"
           # ./test.sh "${{ steps.gmnhg-02.outputs.tag }}" = "v0.2.0"
           # ./test.sh "${{ steps.go-112.outputs.tag }}" = "go1.12.17"
